@@ -1,0 +1,17 @@
+.navbar {
+  background-color: transparent !important;
+}
+
+h1 {
+  padding-left: 10%;
+}
+
+img {
+  width: 8%;
+  height: auto;
+  padding-bottom: 15px;
+}
+
+.area {
+  border: solid 1px red;
+}

@@ -1,0 +1,78 @@
+<div
+  class="
+    d-flex
+    flex-column
+    container-fluid
+    justify-content-center
+    align-items-center
+    vh-100
+  "
+>
+  <div class="" style="width: 200px; height: auto">
+    <img
+      src="https://scontent.fntr5-1.fna.fbcdn.net/v/t1.15752-9/256725681_3010063889215499_7347230706905954777_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=1ovPxJDvaZsAX92zkYZ&tn=q9VAC4rY3qSONyYv&_nc_ht=scontent.fntr5-1.fna&oh=13166a7a52719ba03586845115952c66&oe=61BA5CAD"
+      alt=""
+      style="width: 100%; height: auto"
+    />
+  </div>
+  <p class="display-2"><strong>ISI-TEL</strong></p>
+  <h4>REGISTRO</h4>
+  <form
+    [formGroup]="userForm"
+    (ngSubmit)="register()"
+    class="pt-0"
+    width="100%"
+  >
+    <div class="input-group mb-3 mt-4">
+      <span class="input-group-text" id="basic-addon1">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+        placeholder="Correo electrónico"
+        aria-label="Correo electrónico"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+    <div
+      class="text-danger"
+      *ngIf="
+        userForm.get('email')?.hasError('required') &&
+        userForm.get('email')?.touched
+      "
+    >
+      <span>Tu email <strong>es obligatorio</strong></span>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">
+        <i class="fas fa-eye"></i>
+      </span>
+      <input
+        type="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Contraseña"
+        aria-label="Contraseña"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+    <div
+      class="text-danger"
+      *ngIf="
+        userForm.get('password')?.hasError('required') &&
+        userForm.get('password')?.touched
+      "
+    >
+      <span>La contraseña <strong>es obligatoria</strong></span>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary mx-auto w-100"
+      [disabled]="userForm.invalid"
+    >
+      Registrarse
+    </button>
+  </form>
+</div>

@@ -1,0 +1,84 @@
+<div
+  class="
+    d-flex
+    flex-column
+    container-fluid
+    justify-content-center
+    align-items-center
+    vh-100
+  "
+>
+  <div class="" style="width: 200px; height: auto">
+    <img
+      src="https://scontent.fntr5-1.fna.fbcdn.net/v/t1.15752-9/256725681_3010063889215499_7347230706905954777_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=1ovPxJDvaZsAX92zkYZ&tn=q9VAC4rY3qSONyYv&_nc_ht=scontent.fntr5-1.fna&oh=13166a7a52719ba03586845115952c66&oe=61BA5CAD"
+      alt=""
+      style="width: 100%; height: auto"
+    />
+  </div>
+  <p class="display-2"><strong>ISI-TEL</strong></p>
+  <h4>BIENVENIDO</h4>
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column justify-content-center align-items-center">
+    <div class="input-group mb-3 mt-4">
+      <span class="input-group-text" id="basic-addon1">
+        <i class="fas fa-user"></i>
+      </span>
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+        placeholder="Nombre de Usuario"
+        aria-label="Nombre de Usuario"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+    <div
+      class="text-danger"
+      *ngIf="
+        loginForm.get('email')?.hasError('required') &&
+        loginForm.get('email')?.touched
+      "
+    >
+      <span>Tu email <strong>es obligatorio</strong></span>
+    </div>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="basic-addon1">
+        <i class="fas fa-eye"></i>
+      </span>
+      <input
+        type="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Contraseña"
+        aria-label="Contraseña"
+        aria-describedby="basic-addon1"
+      />
+    </div>
+    <div
+      class="text-danger"
+      *ngIf="
+        loginForm.get('password')?.hasError('required') &&
+        loginForm.get('password')?.touched
+      "
+    >
+      <span>La contraseña <strong>es obligatoria</strong></span>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary w-100"
+      [disabled]="loginForm.invalid"
+    >
+      Iniciar Sesión
+    </button>
+  </form>
+  <hr class="dropdown-divider" />
+  <p>ó</p>
+  <p>¿No tienes cuenta?</p>
+  <button
+    type="button"
+    class="btn btn-primary"
+    style="width: 302px"
+    routerLink="/registro"
+  >
+    Registrarse
+  </button>
+</div>

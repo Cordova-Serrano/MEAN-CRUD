@@ -1,0 +1,147 @@
+<div class="d-flex container-fluid p-0 vh-100">
+  <!-- Sidebar -->
+  <div
+    class="
+      d-flex
+      flex-column flex-shrink-0
+      p-3
+      text-white
+      bg-dark
+      position-sticky
+    "
+    style="width: 280px; height: 100%"
+  >
+    <a
+      href="/"
+      class="
+        d-flex
+        align-items-center
+        mb-3 mb-md-0
+        me-md-auto
+        text-white text-decoration-none
+      "
+    >
+      <img
+        src="https://scontent.fntr5-1.fna.fbcdn.net/v/t1.15752-9/256725681_3010063889215499_7347230706905954777_n.png?_nc_cat=109&ccb=1-5&_nc_sid=ae9488&_nc_ohc=1ovPxJDvaZsAX92zkYZ&tn=q9VAC4rY3qSONyYv&_nc_ht=scontent.fntr5-1.fna&oh=13166a7a52719ba03586845115952c66&oe=61BA5CAD"
+        alt=""
+        width="108"
+        height="auto"
+      />
+      <span class="fs-2"> ISI-TEL </span>
+    </a>
+    <hr />
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item" id="inventario">
+        <a routerLink="/inventario" class="nav-link text-white">
+          <i class="fas fa-clipboard-list"></i>
+          Inventario
+        </a>
+      </li>
+    </ul>
+    <hr />
+    <div class="dropdown">
+      <a
+        href="#"
+        class="
+          d-flex
+          align-items-center
+          text-white text-decoration-none
+          dropdown-toggle
+        "
+        id="dropdownUser1"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        <img
+          src="https://p.kindpng.com/picc/s/78-786207_user-avatar-png-user-avatar-icon-png-transparent.png"
+          alt=""
+          width="32"
+          height="32"
+          class="rounded-circle me-2"
+        />
+        <strong>ADMIN</strong>
+      </a>
+      <ul
+        class="dropdown-menu dropdown-menu-dark text-small shadow"
+        aria-labelledby="dropdownUser1"
+      >
+        <li>
+          <!-- Log Out -->
+          <a class="dropdown-item" href="" onclick="">
+            <button type="button" class="btn btn-primary" routerLink="/home">
+              Log Out
+              <i class="fas fa-sign-out-alt"></i>
+            </button>
+          </a>
+
+          <form id="logout-form" action="" method="POST" class="d-none"></form>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="d-flex flex-column container-fluid">
+    <!-- Inventario -->
+    <div class="container-fluid d-flex flex-column justify-content-center mt-5">
+      <div class="d-flex justify-content-center">
+        <h1 class="display-3 text-black">Inventario 2021</h1>
+      </div>
+      <br />
+      <div class="container-fluid d-flex flex-row-reverse p-0 mb-2">
+        <button
+          type="button"
+          class="btn btn-success"
+          routerLink="/crear-producto"
+        >
+          <i class="fas fa-plus"></i>
+          Añadir Nuevo Producto
+        </button>
+      </div>
+      <div
+        class="d-flex justify-content-center"
+        style="overflow: scroll; height: 650px"
+      >
+        <table
+          *ngIf="listaProductos.length > 0"
+          class="table table-primary table-hover"
+        >
+          <thead>
+            <tr>
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Sistema Operativo</th>
+              <th scope="col">Especificaciones</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of listaProductos">
+              <td>{{ producto.marca }}</td>
+              <td>{{ producto.modelo }}</td>
+              <td>
+                {{ producto.sistemaop }}
+              </td>
+              <!-- <td></td> -->
+              <td>{{ producto.especificaciones }}</td>
+              <td>{{ producto.stock }}</td>
+              <td>{{ producto.precio | currency: "USD" }}</td>
+              <td>
+                <i
+                  (click)="eliminarP(producto._id)"
+                  class="fas fa-trash text-danger m-2"
+                ></i>
+                <i
+                  [routerLink]="['/editar-producto', producto._id]"
+                  class="fas fa-edit text-info"
+                ></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h5 *ngIf="listaProductos.length == 0">No hay celulares que mostrar</h5>
+      </div>
+    </div>
+    <div id="modalContainer"></div>
+  </div>
+</div>
